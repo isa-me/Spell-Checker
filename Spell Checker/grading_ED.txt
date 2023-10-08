@@ -1,0 +1,53 @@
+Grading criteria for Hw6  (edit distance and spell checker)
+
+Penalties:
+Compilation ERROR(S)  : 0 credit (final grade 0)  (If only 1 or 2 minor syntax errors such as missing ; or misspelled variable name: 10 points penalty per error. If major errors, or 3 or more minor errors: no credit.)
+Compilation WARNING(S): 25%-50% penalty
+Code crashes          : 30%-100% penalty 
+Global variables      : 50% penalty if global variables are used in any place. 
+    (Macros used to store limits such as max word size are not global variables).
+Indentation incorrect or inconsistent (only spaces or only tabs): 5 points penalty
+Submitted file is named something other than spell.c             : 5 points penalty
+
+Point distribution:
+115 points total
+
+10 pts - Valgrind  
+
+20 pts - correct edit distance computation (part 1 of program)
+	17 - correct calculation of all edit distance (for all cases tested on)
+		If the table cannot be printed, we cannot verify that it is build correctly: 15 points penalty
+		If recursive, instead of iterative (with loop) method is used: 15 points penalty.
+	 3 - correct behavior for print/no print argument: prints for value 1, does not print for any other value
+
+25 pts printing the table - partial credit:
+	5 - correct top row, i.e. column labels (letter) 
+	5 - correct leftmost column, i.e. row labels (letter)
+	8 - inside cells (all cells that contain a number) are aligned. 
+		5 - cells are aligned.
+		3 - cells have exactly 3 spaces (including the number in the table) (between |  |)
+	5 - horizontal lines of dashes are printed and match the length of the row
+	2 - The final edit distance is printed on a separate line after the table.
+
+5 pts - Give the worst case time complexity to compute the edit distance from T test words  to D dictionary words where all words (from dictionary and misspelled) have length MAX_LEN.
+5 pts - if any of the files fails to open, program will not crash and will not generate memory errors. 
+	
+10 pts - correct display for each processed word: the word is printed with | around it (see |tis| in example below), the options menu for corrections is printed, takes the user's answer(s). Here a 2pt penalty is applied for each missed component. 
+
+40 pts - Correct spell check part (part 2 of program: read in files and do spell check)
+	15 - minimum distance is computed correct (10pts) and printed before the words are printed (5pts).
+	15 - all words at minimum distance are found and printed (10pts), and their corresponding option numbers start from 1 (5 pts)
+	10 - User selection works. If the user selects option 1 or higher, the corresponding word is printed. If an invalid option is given a message is displayed and the original word is used (see demo in video).
+	     E.g. :
+---> |tis| 
+-1 - type correction
+ 0 - leave word as is (do not fix spelling)
+     Minimum distance: 1  
+     Words that give minimum distance:
+ 1 - his
+ 2 - is
+ 3 - this
+ 4 - tie
+Enter your choice (from the above options): 3
+The corrected word is: this
+
